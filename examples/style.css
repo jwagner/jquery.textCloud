@@ -1,0 +1,24 @@
+#cloud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 0.8em;
+}
+
+body {
+    overflow: hidden;
+}
+
+.textCloud-item {
+  max-width: 10em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0.2em;
+  white-space: nowrap;
+  transition: left 1s ease-in-out;
+  -moz-transition: left 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+}

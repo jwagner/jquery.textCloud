@@ -3,13 +3,24 @@
 jQuery.textCloud
 ================
 
-Arranges a set of texts in a cloud.
+Arranges a set of texts in a cloud using randomized
+placement. Note that not all texts are added, the
+algorithm skips texts when it cant find a place for them.
 
-Usage:
+
+Repo
+----
+
+https://github.com/jwagner/jquery.textCloud/
+
+Usage
+-----
+
+<div id="cloud" style="position: absolute;..."></div>
 
 var terms = [
         {text: 'Hello', scale: 1.0},
-        {text: 'World', scale: 1.2},
+        {text: 'World', scale: 1.2}
     ],
     options = {
         colors: '#833 #444 #955 #666 #777 #888 #975'.split(' '),
@@ -18,7 +29,31 @@ var terms = [
 
 $('#cloud').textCloud(terms, options);
 
-Algorithm:
+
+CSS
+---
+
+While not strictly required it makes sense to style the items to
+get some nice CSS3 transitions.
+
+.textCloud-item {
+  max-width: 10em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+  padding: 0.2em;
+
+  transition: left 1s ease-in-out;
+  -moz-transition: left 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+}
+
+
+Algorithm
+---------
 
 for term in terms:
     do
@@ -27,6 +62,9 @@ for term in terms:
 
     add term
 
+
+License
+-------
 
 Copyright (C) 2011 by Jonas Wagner
 
@@ -66,7 +104,7 @@ function createBox(parent, item, existing) {
         el = existing[text] = $('<span class="textCloud-item"></span>')
         .text(text)
         .css({
-            position: 'absolute',
+            position: 'relative',
             top: ~~(Math.random()*parent.height()),
             left: ~~(Math.random()*parent.width())
         });
